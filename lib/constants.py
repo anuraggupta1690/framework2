@@ -6,9 +6,7 @@ Constantsfile Designed by Anurag Gupta
 
 
 class URLs:
-    """
-    This class contains URLs of different pages
-    """
+    """This class contains URLs of different pages"""
     base_url = "https://demoqa.com/"
     elements_page = f"{base_url}elements"
     forms_page = f"{base_url}forms"
@@ -19,4 +17,16 @@ class URLs:
 
 
 class PageTitles:
+    """This class contains page titles constants"""
     title = "DEMOQA"
+
+
+class PageHeaders:
+    """This class contains page header constants"""
+
+    element = "Elements"
+    form = "Forms"
+    alert = "Alerts, Frame & Windows"
+    widgets = "Widgets"
+    interation = "Interactions"
+    book = "Book Store"
