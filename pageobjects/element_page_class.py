@@ -23,6 +23,9 @@ class ElementPage(BaseClass):
     output_email = "#email"
     output_current_address = "p[id=currentAddress]"
     output_permanent_address = "p[id=permanentAddress]"
+    check_box_side_bar_icon = "//span[contains(text(), 'Check Box')]"
+    check_box = ".rct-checkbox"
+    check_box_result_text = "//div[@id='result']"
 
     def __init__(self, driver, url: str = URLs.elements_page):
         super().__init__(driver, url)
@@ -49,9 +52,17 @@ class ElementPage(BaseClass):
     def get_text_value(self, element: str) -> str:
         """
         Method which return inner text of given element(like: name, email, current_address, permanent_address
+        eg: get_element_page.get_text_value(element='current_address')
         :param element: element name in text
         :return: Inner text of element
         :rtype: str
         """
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         return self.driver.find_element(By.CSS_SELECTOR, getattr(self, f"output_{element}")).text
+
+    def click_check_box(self):
+        self.driver.find_element(By.XPATH, self.check_box_side_bar_icon).click()
+        self.driver.find_element(By.CSS_SELECTOR, self.check_box).click()
+
+    def get_check_box_result_text(self):
+        return self.driver.find_element(By.XPATH, self.check_box_result_text).text
