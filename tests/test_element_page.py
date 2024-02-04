@@ -7,11 +7,13 @@ test_element_page file Designed by Anurag Gupta
 import pytest
 
 from lib.constants import PageTitles, PageHeaders
+from lib.logging_ import get_logger as logger_
 from lib.utils import read_test_data_file
 TEST_FILE = read_test_data_file(r"\test_data\test_element_page.json")
 
 
 def test_verify_user_is_able_to_fill_the_form(get_element_page):
+    logger_().info("This info from test_verify_user_is_able_to_fill_the_form")
     expected_values = TEST_FILE["user_details"]
     get_element_page.open_page()
     get_element_page.text_box_click()
@@ -26,6 +28,7 @@ def test_verify_user_is_able_to_fill_the_form(get_element_page):
 
 
 def test_click_check_box(get_element_page):
+    logger_().info("This info from test_click_check_box")
     get_element_page.open_page()
     get_element_page.click_check_box()
     assert get_element_page.get_check_box_result_text() == TEST_FILE["check_box_result"]
